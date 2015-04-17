@@ -6,5 +6,6 @@ Contains oh-my-zsh as submodule.
     curl -L https://raw.githubusercontent.com/martin-hoger/.zsh/master/bin/install.sh | sh
 
 
-**Install (setep by step)
+**Install (setep by step)**
+
 See instructions at https://raw.githubusercontent.com/martin-hoger/.zsh/master/bin/install.sh
