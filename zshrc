@@ -242,9 +242,9 @@ alias zz='fasd_cd -d -t'
 #https://github.com/zsh-users/zaw
 source ~/.zsh/custom/zaw/zaw.zsh
 # Add custom source for zaw
-source ~/.zsh/custom/zaw-custom/wfasd.zsh
-source ~/.zsh/custom/zaw-custom/wfile.zsh
-source ~/.zsh/custom/zaw-custom/wfasd-current-dir.zsh
+source ~/.zsh/custom/zaw-sources/wfasd.zsh
+source ~/.zsh/custom/zaw-sources/wfile.zsh
+source ~/.zsh/custom/zaw-sources/wfasd-current-dir.zsh
 #bind keys
 bindkey '' zaw-history
 bindkey '' zaw-wfasd
