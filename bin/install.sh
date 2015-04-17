@@ -20,7 +20,7 @@ git submodule init && git submodule update
 
 #If it doesn't exist in bin folder make symlink
 mkdir -p ~/bin
-[[ -f ~/bin/fasd ]] || ln -s ~/.zsh/custom/fasd/fasd ~/bin/fasd
-[[ -f ~/bin/fzf ]] || ln -s ~/.zsh/custom/fzf/fzf ~/bin/fzf
+[ -f ~/bin/fasd ] || ln -s ~/.zsh/custom/fasd/fasd ~/bin/fasd
+[ -f ~/bin/fzf ] || ln -s ~/.zsh/custom/fzf/fzf ~/bin/fzf
 
 ln -s ~/.zsh/zshrc ~/.zshrc
