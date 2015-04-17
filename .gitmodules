@@ -1,0 +1,12 @@
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh
+[submodule "custom/fasd"]
+	path = custom/fasd
+	url = https://github.com/clvv/fasd
+[submodule "custom/fzf"]
+	path = custom/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "custom/zaw"]
+	path = custom/zaw
+	url = https://github.com/zsh-users/zaw
