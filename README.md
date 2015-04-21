@@ -7,7 +7,7 @@ For Debian based distros: `sudo apt-get install zsh`
 For Red Hat based distros: `sudo yum install zsh`  
 For Suse based distros: `sudo zypper install zsh`  
 
-For Debian based distros: `chsh -s /bin/zsh {user-name}`
+For Debian based distros: `chsh -s $(which zsh) {user-name}`
 
 **Install (fast)**
 
