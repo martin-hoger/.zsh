@@ -2,6 +2,7 @@
 Contains oh-my-zsh as submodule.
 
 **Install ZSH**
+
 For Debian based distros: `sudo apt-get install zsh`
 
 For Red Hat based distros: `sudo yum install zsh`
