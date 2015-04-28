@@ -13,7 +13,7 @@ plugins=(git history history-substring-search extract compleat urltools zsh-synt
 source $ZSH/oh-my-zsh.sh
 
 # Path settings
-export PATH=$PATH:~/bin:~/appz/google-cloud-sdk/bin
+export PATH=$PATH:~/bin
 
 # Stop auto corrections
 # unsetopt correct_all
@@ -344,7 +344,7 @@ alias rw='/home/drain/bin/record-window.sh'
 alias t='tree -d -L 2'
 alias vim="vim -p"
 alias wedos-mount='/mnt/wedos-mount; cd /mnt/wedos'
-alias zshconf='vim ~/.zshrc; source ~/.zshrc; echo Config reloaded.'
+alias zshconf='cd ~/.zsh; vim zshrc; source zshrc; cd ~; echo Config reloaded.'
 alias zshreload='source ~/.zshrc; echo Config reloaded.'
 alias shutdown='sudo shutdown now'
 alias poweroff='sudo shutdown now'
