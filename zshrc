@@ -8,7 +8,7 @@ export UPDATE_ZSH_DAYS=30
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git history history-substring-search extract compleat urltools zsh-syntax-highlighting)
+plugins=(history history-substring-search extract compleat git docker zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -319,6 +319,10 @@ alias ags="sudo apt-cache search"
 alias afs="sudo apt-file search"
 alias crontab="crontab -i"
 alias d='dirs -v'
+alias do='docker'
+alias dor='docker run -it'
+alias doe='docker exec -it'
+alias doi='docker images'
 alias dicom-store-demo-cz="storescu client.fetview.de 22033"
 alias dicom-store-demo-de="storescu client.fetview.de 22022"
 alias dicom-store-demo-en="storescu client.fetview.de 22044"
@@ -369,7 +373,12 @@ alias -s pdf=evince
 alias -s xcf=gimp
 
 space-handler() {
-    #Make global alias to be expande after space
+    #Expand alias after space
+    if [[ $LBUFFER =~ '^[a-zA-Z0-9]+$' ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+    #Expand global alias after space
     if [[ $LBUFFER =~ ' [A-Z0-9]+$' ]]; then
         zle _expand_alias
         zle expand-word
