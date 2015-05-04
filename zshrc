@@ -346,7 +346,7 @@ alias rmf='rm -rf'
 alias rr='/home/drain/bin/record-region2gif.sh'
 alias rw='/home/drain/bin/record-window.sh'
 alias t='tree -d -L 2'
-alias vim="vim -p"
+alias vim='vim -p'
 alias wedos-mount='/mnt/wedos-mount; cd /mnt/wedos'
 alias zshconf='cd ~/.zsh; vim zshrc; source zshrc; cd ~; echo Config reloaded.'
 alias zshreload='source ~/.zshrc; echo Config reloaded.'
@@ -372,6 +372,13 @@ alias -s png=gwenview
 alias -s pdf=evince
 alias -s xcf=gimp
 
+#We need to make sure these aliases are not defined,
+#since we do not want to expand them but call extra functions.
+unalias v
+unalias z
+unalias zz
+
+#When space is pressed.
 space-handler() {
     #Expand alias after space
     if [[ $LBUFFER =~ '^[a-zA-Z0-9]+$' ]]; then
@@ -408,7 +415,7 @@ bindkey -M isearch " " magic-space # normal space during searches
 
 #Unfortunatelly didn't work for me
 #autoload -Uz copy-earlier-word
-#zle -N copy-earlier-word
+    #zle -N copy-earlier-word
 #bindkey "m" copy-earlier-word
 
 #Start predictive typing
