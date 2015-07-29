@@ -267,6 +267,7 @@ export LESSOPEN
 
 #Global aliases
 alias -g A='| ag'
+alias -g AWK="| awk '{print \$0}'"
 alias -g AMP="> /dev/null 2>&1 &"
 alias -g CA="2>&1 | cat -A"
 alias -g C='| wc -l'
@@ -278,7 +279,7 @@ alias -g EL='|& less'
 alias -g ELS='|& less -S'
 alias -g ETL='|& tail -20'
 alias -g ET='|& tail'
-alias -g F=' | fmt -'
+alias -g F='| fmt -'
 alias -g G='| grep -i'
 alias -g H='| head -n 40'
 alias -g HL='|& head -20'
