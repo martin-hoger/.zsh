@@ -164,6 +164,17 @@ function gitaddcommitpush() {
     git add -A :/ && git commit -m "$1" && git push
 }
 
+# Commits submodule
+function gitcommitsubmodule() {
+    MODULE_DIR=$(git rev-parse --show-toplevel)
+    cd $MODULE_DIR/..
+    git rev-parse --show-toplevel
+    if [[ "$?" == "0" ]]; then
+        git add $MODULE_DIR
+        git commit -m "Submodule $MODULE_DIR updated"
+    fi
+}
+
 # Opens command in new terminal.
 function NT() {
     if [[ "$@" == "" ]]; then
