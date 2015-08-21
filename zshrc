@@ -160,12 +160,12 @@ function mail-file() {
 }
 
 # Quick upstream git commit fix
-function gitaddcommitpush() {
+function gaddcommitpush() {
     git add -A :/ && git commit -m "$1" && git push
 }
 
 # Commits submodule
-function gitcommitsubmodule() {
+function gcommitsubmodule() {
     MODULE_DIR=$(git rev-parse --show-toplevel)
     cd $MODULE_DIR/..
     git rev-parse --show-toplevel
