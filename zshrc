@@ -166,13 +166,18 @@ function gaddcommitpush() {
 
 # Commits submodule
 function gcommitsubmodule() {
+    CURRENT_DIR=$(pwd)
     MODULE_DIR=$(git rev-parse --show-toplevel)
+    MODULE_NAME=${MODULE_DIR##*/}
     cd $MODULE_DIR/..
     git rev-parse --show-toplevel
     if [[ "$?" == "0" ]]; then
         git add $MODULE_DIR
-        git commit -m "Submodule $MODULE_DIR updated"
+        git commit -m "Submodule $MODULE_NAME updated"
+    else
+        echo "Error: Super project was not found."
     fi
+    cd $CURRENT_DIR
 }
 
 # Opens command in new terminal.
