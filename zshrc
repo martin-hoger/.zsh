@@ -13,7 +13,8 @@ plugins=(history history-substring-search extract compleat git docker zsh-syntax
 source $ZSH/oh-my-zsh.sh
 
 # Path settings
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:~/go/bin
+export GOPATH=~/go
 
 # Stop auto corrections
 # unsetopt correct_all
