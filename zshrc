@@ -2,9 +2,9 @@
 ZSH=$HOME/.zsh/oh-my-zsh
 ZSH_THEME=""
 CASE_SENSITIVE="false"
-#DISABLE_AUTO_UPDATE="true"
-#COMPLETION_WAITING_DOTS="true"
-export UPDATE_ZSH_DAYS=30
+DISABLE_AUTO_UPDATE="true"
+COMPLETION_WAITING_DOTS="true"
+# export UPDATE_ZSH_DAYS=30
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
