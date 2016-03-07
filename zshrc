@@ -198,7 +198,7 @@ function drdlen() {
 
 #Creates new invoice in my invoice folder.
 function invoice-new() {
-    YEAR=2015
+    YEAR=2016
     [[ "$1" == "" ]] && { echo "Enter client name"; return 1 }
     # Invoice dir
     cd ~/Documents/business/faktury/$YEAR
