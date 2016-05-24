@@ -227,8 +227,8 @@ function invoice-new() {
     # sed -i.bak "s/[0-9]{2}\.[0-9]{2}\.[0-9]{4}/$(date +%Y-%m-%d)/1" $DEST_FILE                                         
     DATE_TODAY=$(date +%d.%m.%Y)
     DATE_DUE_DATE=$(date --date="-14 days ago" +%d.%m.%Y)
-    sed -i.bak -r ":a;N;\$!ba;s/[0-9]{2}\.[0-9]{2}\.[0-9]{4}/$DATE_TODAY/1" $DEST_FILE
-    sed -i.bak -r ":a;N;\$!ba;s/[0-9]{2}\.[0-9]{2}\.[0-9]{4}/$DATE_DUE_DATE/2" $DEST_FILE
+    sed -i.bak -r ":a;N;\$!ba;s/[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}/$DATE_TODAY/1" $DEST_FILE
+    sed -i.bak -r ":a;N;\$!ba;s/[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}/$DATE_DUE_DATE/2" $DEST_FILE
     rm $DEST_FILE.bak
     echo "Data in the file were replaced"
     echo
