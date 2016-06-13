@@ -371,7 +371,7 @@ alias shutdown='sudo shutdown now'
 alias poweroff='sudo shutdown now'
 alias suspend='sudo pm-suspend'
 alias reboot='sudo reboot'
-
+alias sen='docker run --privileged --rm -v /var/run/docker.sock:/run/docker.sock -ti -e TERM tomastomecek/sen'
 
 #Now pressing return-key after entering foobar.tex starts vim with foobar.tex. Calling a html-file runs browser w3m. www.zsh.org 
 alias -s txt=vim
