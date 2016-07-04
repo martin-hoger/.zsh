@@ -236,13 +236,22 @@ function invoice-new() {
     chromium $DEST_FILE
 }
 
-#Creates dir and makes cd at the same time.
+# Creates dir and makes cd at the same time.
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
-#Search and open a dir in current directory structure
+# Search and open a dir in current directory structure
 function cdfind () { cd **/*$1*(/om[1]); }
 function cdd () { cd $(fasd -dlR | grep $(pwd) | grep -m 1 $1) }
-#Search and open a file in current directory structure
+# Search and open a file in current directory structure
 function vdd () { vim $(cat ~/.vim-fuf-data/mrufile/items | grep $(pwd) | grep -Po "/[^']+" | grep -m 5 $1) }
+# Run command multiple times:
+# run 5 echo 'Hello World!
+run() {
+    number=$1
+    shift
+    for i in `seq $number`; do
+      $@
+    done
+}
 
 #Fasd - jump around
 eval "$(fasd --init auto)"
