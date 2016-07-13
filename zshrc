@@ -233,7 +233,7 @@ function invoice-new() {
     echo "Data in the file were replaced"
     echo
     vim +:99 $DEST_FILE
-    chromium $DEST_FILE
+    chromium-browser $DEST_FILE
 }
 
 # Creates dir and makes cd at the same time.
