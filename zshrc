@@ -450,4 +450,3 @@ bindkey -M isearch " " magic-space # normal space during searches
 #bindkey '' predict-on
 #bindkey '' predict-off
 
-
