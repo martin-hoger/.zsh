@@ -293,7 +293,7 @@ export LESSOPEN
 
 #Global aliases
 alias -g A='| ag'
-alias -g AWK="| awk '{print \$0}'"
+alias -g AWK="| awk '{print \$1}'"
 alias -g AMP="> /dev/null 2>&1 &"
 alias -g CA="2>&1 | cat -A"
 alias -g C='| wc -l'
