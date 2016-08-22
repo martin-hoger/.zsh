@@ -94,9 +94,12 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
 
 PROMPT=$(
     CURRENT_BG='NONE'
-    test $EUID = 0 && USER_BG="124" || USER_BG="238"
-    prompt_segment "$USER_BG" "007" "%n@%m"
-    prompt_segment "003" "016" " %~ "
+    prompt_segment "238" "007" "%n@%m"
+    BG="003"
+    test $(cat /etc/hostname) '=~' "^acer" -a ! $EUID = 0 && BG="001"
+    test $(cat /etc/hostname) '=~' "^wedos" && BG="071"
+    test $(cat /etc/hostname) '=~' "^fv-" && BG="135"
+    prompt_segment "$BG" "016" " %~ "
     prompt_end
     echo " "
 )
