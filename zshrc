@@ -31,16 +31,59 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 
 # Prompt
 
-# Colors:
-# http://gabri.me/2013/01/custom-colors-in-your-zsh-prompt/
+### Segment drawing
+# A few utility functions to make it easy and re-usable to draw segmented prompts
+
+
+# Characters
+SEGMENT_SEPARATOR="\ue0b0"
+PLUSMINUS="\u00b1"
+BRANCH="\ue0a0"
+DETACHED="\u27a6"
+CROSS="\u2718"
+LIGHTNING="\u26a1"
+GEAR="\u2699"
+
+# Begin a segment
+# Takes two arguments, background and foreground. Both can be omitted,
+# rendering default background/foreground.
+prompt_segment() {
+  local bg fg
+  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+    print -n "%{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%}"
+  else
+    print -n "%{$bg%}%{$fg%}"
+  fi
+  CURRENT_BG=$1
+  [[ -n $3 ]] && print -n $3
+}
+
+# End the prompt, closing any open segments
+prompt_end() {
+  if [[ -n $CURRENT_BG ]]; then
+    print -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+  else
+    print -n "%{%k%}"
+  fi
+  print -n "%{%f%}"
+  CURRENT_BG=''
+}
+
+# List colors: 
+#     spectrum_ls
 function get_actual_load() {
     echo $(cut -f 1 -d " " /proc/loadavg)
 }
-local user='%{$fg[green]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}'
-local pwd='%{$fg[yellow]%}%~%{$reset_color%}'
-local load_average='%{$fg[magenta]%}‹load: $(get_actual_load)›%{$reset_color%}'
+
+local user='$(prompt_segment magenta green "%n@%m")'
+# local user='%{$fg[green]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}'
+local pwd='$(prompt_segment red yellow " %~ "; prompt_segment blue red " %~ ")$(prompt_segment blue red " %~ ")'
+# local pwd='%{$fg[yellow]%}%~%{$reset_color%}'
 local return_code='%(?..%{$fg[red]%}%? ↵%{$reset_color%})'
 local git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)%{$reset_color%}'
+local load_average='%{$fg[magenta]%}load: $(get_actual_load)%{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -53,7 +96,14 @@ ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} ➜"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} ═"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
 
-PROMPT="${user} ${pwd} %{$fg[blue]%}»%{$reset_color%} "
+PROMPT=$(
+    CURRENT_BG='NONE'
+    test $EUID = 0 && USER_BG="088" || USER_BG="238"
+    prompt_segment "$USER_BG" "007" "%n@%m"
+    prompt_segment "003" "016" " %~ "
+    prompt_end
+    echo " "
+)
 RPROMPT="${return_code} ${git_branch} ${load_average}"
 
 #quick change directories. Add this to your ~/.zshrc, then just enter “cd …./dir”
