@@ -31,9 +31,11 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 
 # Prompt
 
+# List colors: 
+#     spectrum_ls
+
 ### Segment drawing
 # A few utility functions to make it easy and re-usable to draw segmented prompts
-
 
 # Characters
 SEGMENT_SEPARATOR="\ue0b0"
@@ -71,16 +73,10 @@ prompt_end() {
   CURRENT_BG=''
 }
 
-# List colors: 
-#     spectrum_ls
 function get_actual_load() {
     echo $(cut -f 1 -d " " /proc/loadavg)
 }
 
-local user='$(prompt_segment magenta green "%n@%m")'
-# local user='%{$fg[green]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}'
-local pwd='$(prompt_segment red yellow " %~ "; prompt_segment blue red " %~ ")$(prompt_segment blue red " %~ ")'
-# local pwd='%{$fg[yellow]%}%~%{$reset_color%}'
 local return_code='%(?..%{$fg[red]%}%? ↵%{$reset_color%})'
 local git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)%{$reset_color%}'
 local load_average='%{$fg[magenta]%}load: $(get_actual_load)%{$reset_color%}'
@@ -98,7 +94,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
 
 PROMPT=$(
     CURRENT_BG='NONE'
-    test $EUID = 0 && USER_BG="088" || USER_BG="238"
+    test $EUID = 0 && USER_BG="124" || USER_BG="238"
     prompt_segment "$USER_BG" "007" "%n@%m"
     prompt_segment "003" "016" " %~ "
     prompt_end
