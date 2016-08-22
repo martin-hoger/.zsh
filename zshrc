@@ -97,7 +97,7 @@ PROMPT=$(
     prompt_segment "238" "007" "%n@%m"
     BG="003"
     test $(cat /etc/hostname) '=~' "^acer" -a $EUID = 0 && BG="001"
-    test $(cat /etc/hostname) '=~' "^wedos" && BG="071"
+    test $(cat /etc/hostname) '=~' "^wedos" && BG="038"
     test $(cat /etc/hostname) '=~' "^fv-" && BG="135"
     prompt_segment "$BG" "016" " %~ "
     prompt_end
