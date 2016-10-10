@@ -499,3 +499,7 @@ bindkey -M isearch " " magic-space # normal space during searches
 #bindkey '' predict-on
 #bindkey '' predict-off
 
+# OPAM configuration
+if [[ -d /root/.opam ]]; then
+    . /root/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+fi
