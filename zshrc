@@ -245,46 +245,6 @@ function drdlen() {
     drush dl $1 && drush en $1 -y
 }
 
-#Creates new invoice in my invoice folder.
-function invoice-new() {
-    YEAR=2016
-    [[ "$1" == "" ]] && { echo "Enter client name"; return 1 }
-    # Invoice dir
-    cd ~/Documents/business/faktury/$YEAR
-    # Let's show the result
-    echo "Year  : $YEAR"
-    echo "Client:"
-    SOURCE_FILE=$(grep -i -l "$1" ../201?/*.html | sort | tail -n 1)
-    cat $SOURCE_FILE | grep -i -m 1 "$1"
-    echo
-    echo "Source file: $SOURCE_FILE"
-    echo
-    test ! -e "$SOURCE_FILE" && { echo "No such file or directory: $SOURCE_FILE" ; return 1 }
-    SOURCE_NO=$(echo "$SOURCE_FILE" | sed -r 's#^\.\.\/[0-9]+\/([0-9]+).*$#\1#g')
-    DEST_NO=$(( $(ls -1 *.html | tail -n 1 | sed -r 's#^([0-9]+).*$#\1#g') + 1 ))
-    echo "Source number: $SOURCE_NO"
-    echo "Dest number: $DEST_NO"
-    [[ "$DEST_NO" -lt 10 ]] && { echo "Dest number is too low, exit"; return 1 }
-    DEST_FILE="${DEST_NO}-.html"
-    echo
-    echo "Is it correct? Ctrl+C to exit"
-    read
-    cp "$SOURCE_FILE" "$DEST_FILE"
-    echo "File coppied to $DEST_FILE"
-    sed -i.bak "s/8$SOURCE_NO</8$DEST_NO</g" $DEST_FILE                                         
-    sed -i.bak "s/<title>.*<\/title>/<title>invoice-8$DEST_NO<\/title>/g" $DEST_FILE                                         
-    # sed -i.bak "s/[0-9]{2}\.[0-9]{2}\.[0-9]{4}/$(date +%Y-%m-%d)/1" $DEST_FILE                                         
-    DATE_TODAY=$(date +%d.%m.%Y)
-    DATE_DUE_DATE=$(date --date="-14 days ago" +%d.%m.%Y)
-    sed -i.bak -r ":a;N;\$!ba;s/[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}/$DATE_TODAY/1" $DEST_FILE
-    sed -i.bak -r ":a;N;\$!ba;s/[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}/$DATE_DUE_DATE/2" $DEST_FILE
-    rm $DEST_FILE.bak
-    echo "Data in the file were replaced"
-    echo
-    vim +:99 $DEST_FILE
-    chromium-browser $DEST_FILE
-}
-
 # Creates dir and makes cd at the same time.
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
 # Search and open a dir in current directory structure
