@@ -230,6 +230,12 @@ function gcommitsubmodule() {
     cd $CURRENT_DIR
 }
 
+# Grep email addresses from stdin.
+function grep-email() {
+    cat | grep -E -o "\b[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\b"
+}
+
+
 # Opens command in new terminal.
 function NT() {
     if [[ "$@" == "" ]]; then
