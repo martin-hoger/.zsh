@@ -96,9 +96,10 @@ PROMPT=$(
     CURRENT_BG='NONE'
     prompt_segment "238" "007" "%n@%m"
     BG="003"
-    test $HOST '=~' "^acer" -a $EUID = 0 && BG="001" &> /dev/null
-    test $HOST '=~' "^wedos" && BG="038" &> /dev/null
-    test $HOST '=~' "^fv-" && BG="135" &> /dev/null
+    test $HOST '=~' "^acer" -a $EUID = 0 && BG="001"
+    test $HOST '=~' "^wedos" && BG="038"
+    test $HOST '=~' "^fv-" && BG="135"
+    test $HOST '=~' "^default" && BG="70"
     prompt_segment "$BG" "016" " %~ "
     prompt_end
     echo " "
