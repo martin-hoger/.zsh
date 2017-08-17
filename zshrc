@@ -95,7 +95,8 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} ✭"
 PROMPT=$(
     CURRENT_BG='NONE'
     prompt_segment "238" "007" "%n@%m"
-    BG="003"
+    BG=$(cat ~/.zsh-prompt-color 2> /dev/null)
+    test "$BG" = "" && BG="003"
     test $HOST '=~' "^acer" -a $EUID = 0 && BG="001"
     test $HOST '=~' "^wedos" && BG="038"
     test $HOST '=~' "^fv-" && BG="135"
@@ -377,7 +378,7 @@ alias drwsphp3='drush ws --type=php --count=200'
 alias drwsphp='drush ws --type=php --count=30'
 alias glg="git log --stat --graph --all --decorate"
 alias giu="git submodule init; git submodule update"
-alias gw='gwenview . > /dev/null 2>&1 &'
+alias gw='viewnior . > /dev/null 2>&1 &'
 alias ha="hamster-cli"
 alias i3conf='vim ~/.i3/config'
 alias ll-full='ls -rt -d -1 $PWD/*'
@@ -389,6 +390,7 @@ alias rmf='rm -rf'
 alias rr='/home/drain/bin/record-region2gif.sh'
 alias rw='/home/drain/bin/record-window.sh'
 alias t='tree -d -L 2'
+alias vn='viewnior . > /dev/null 2>&1 &'
 alias zshconf='cd ~/.zsh; vim zshrc; source zshrc; cd ~; echo Config reloaded.'
 alias zshreload='source ~/.zshrc; echo Config reloaded.'
 alias shutdown='sudo shutdown now'
