@@ -77,6 +77,25 @@ function get_actual_load() {
     echo $(cut -f 1 -d " " /proc/loadavg)
 }
 
+# Get execution time
+REPORTTIME_TOTAL=5
+# Displays the execution time of the last command if set threshold was exceeded
+cmd_execution_time() {
+  local stop=$((`date "+%s + %N / 1_000_000_000.0"`))
+  let local "elapsed = ${stop} - ${cmd_start_time}"
+  (( $elapsed > $REPORTTIME_TOTAL )) && print -P "%F{yellow}${elapsed}s%f"
+}
+# Get the start time of the command
+preexec() {
+  cmd_start_time=$((`date "+%s + %N / 1.0e9"`))
+}
+# Output total execution
+precmd() {
+  if (($+cmd_start_time)); then
+    cmd_execution_time
+  fi
+}
+
 local return_code='%(?..%{$fg[red]%}%? ↵%{$reset_color%})'
 local git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)%{$reset_color%}'
 local load_average='%{$fg[magenta]%}load: $(get_actual_load)%{$reset_color%}'
