@@ -77,13 +77,31 @@ function get_actual_load() {
     echo $(cut -f 1 -d " " /proc/loadavg)
 }
 
-# Get execution time
+# Show execution time
+# If longer then $REPORTTIME_TOTAL seconds
 REPORTTIME_TOTAL=5
 # Displays the execution time of the last command if set threshold was exceeded
 cmd_execution_time() {
   local stop=$((`date "+%s + %N / 1_000_000_000.0"`))
   let local "elapsed = ${stop} - ${cmd_start_time}"
-  (( $elapsed > $REPORTTIME_TOTAL )) && print -P "%F{yellow}${elapsed}s%f"
+  (( $elapsed < $REPORTTIME_TOTAL )) && return
+  # Basic settings.
+  unit="seconds"
+  precision=2
+  # If the task take long, show minutes/hours.
+  hours=$(( elapsed / 3600 ))
+  minuts=$(( elapsed / 60 ))
+  if (( $elapsed > 60 && $elapsed < 3600 )); then
+      elapsed=$(( elapsed / 60 ))
+      unit="minutes"
+      precision=1
+  fi
+  if (( $elapsed >= 3600 )); then
+      elapsed=$(( elapsed / 3600 ))
+      unit="hours"
+      precision=1
+  fi
+  print -P "Total time: %F{yellow}$(printf "%.${precision}f" "$elapsed")%f $unit"
 }
 # Get the start time of the command
 preexec() {
