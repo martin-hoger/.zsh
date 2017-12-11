@@ -510,3 +510,7 @@ if [[ -d /root/.opam ]]; then
     . /root/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
 
+# Ser vim as ditor
+VISUAL=vim
+export VISUAL EDITOR=vim
+export EDITOR
