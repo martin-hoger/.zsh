@@ -413,6 +413,7 @@ alias drws='vim +:WatchdogStatus'
 alias drwsphp2='drush ws --type=php --count=90'
 alias drwsphp3='drush ws --type=php --count=200'
 alias drwsphp='drush ws --type=php --count=30'
+alias gl="git pull; git submodule init; git submodule update"
 alias glg="git log --stat --graph --all --decorate"
 alias giu="git submodule init; git submodule update"
 alias gw='viewnior . > /dev/null 2>&1 &'
