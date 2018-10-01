@@ -258,6 +258,10 @@ function gcommitsubmodule() {
     CURRENT_DIR=$(pwd)
     MODULE_DIR=$(git rev-parse --show-toplevel)
     MODULE_NAME=${MODULE_DIR##*/}
+    echo "Push $MODULE_NAME git repository..."
+    git push
+    echo
+    echo "Adding, comminting submodule $MODULE_NAME..."
     cd $MODULE_DIR/..
     git rev-parse --show-toplevel
     if [[ "$?" == "0" ]]; then
