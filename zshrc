@@ -431,6 +431,7 @@ alias N="nice -n 19"
 alias rmf='rm -rf'
 alias rr='/home/drain/bin/record-region2gif.sh'
 alias rw='/home/drain/bin/record-window.sh'
+alias r='ranger'
 alias t='tree -d -L 2'
 alias vn='viewnior . > /dev/null 2>&1 &'
 alias zshconf='cd ~/.zsh; vim zshrc; source zshrc; cd ~; echo Config reloaded.'
