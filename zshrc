@@ -404,6 +404,7 @@ alias ags="sudo apt-cache search"
 alias afs="sudo apt-file search"
 alias crontab="crontab -i"
 alias d='dirs -v'
+alias df='df -h | grep -vP "docker|tmpfs|udev" | grep -iP "dev|size"'
 alias doc='docker'
 alias docr='docker run -it'
 alias doce='docker exec -it'
