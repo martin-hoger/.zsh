@@ -429,7 +429,7 @@ alias l='ll'
 alias ll='LC_COLLATE="C" ls -alh --group-directories-first'
 alias NI="nice -n 19 ionice -c3"
 alias N="nice -n 19"
-alias mycli="test -e /usr/bin/mycli && mycli || sudo docker run --rm -ti --name=mycli -v ~/.my.cnf:/root/.my.cnf mhoger/mycli --host=172.17.0.1"
+alias mycli="test -e /usr/bin/mycli && mycli || (sudo docker rm -f mycli; sudo docker run --rm -ti --name=mycli -v ~/.my.cnf:/root/.my.cnf mhoger/mycli --host=172.17.0.1)"
 alias rmf='rm -rf'
 alias rr='/home/drain/bin/record-region2gif.sh'
 alias rw='/home/drain/bin/record-window.sh'
