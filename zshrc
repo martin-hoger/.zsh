@@ -423,6 +423,7 @@ alias glg="git log --stat --graph --all --decorate"
 alias giu="git submodule init; git submodule update"
 alias gw='viewnior . > /dev/null 2>&1 &'
 alias ha="hamster-cli"
+alias fe="find . | entr -c"
 alias i3conf='vim ~/.i3/config'
 alias ll-full='ls -rt -d -1 $PWD/*'
 alias l='ll'
