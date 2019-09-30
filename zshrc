@@ -425,6 +425,7 @@ alias gw='viewnior . > /dev/null 2>&1 &'
 alias ha="hamster-cli"
 alias fe="find . | entr -c"
 alias i3conf='vim ~/.i3/config'
+alias k='kubectl'
 alias ll-full='ls -rt -d -1 $PWD/*'
 alias l='ll'
 alias ll='LC_COLLATE="C" ls -alh --group-directories-first'
