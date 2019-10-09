@@ -524,3 +524,10 @@ fi
 VISUAL=vim
 export VISUAL EDITOR=vim
 export EDITOR
+
+# Autocomplete
+# https://github.com/zsh-users/zsh-autosuggestions#configuration
+source ~/.zsh/custom/zsh-autosuggestions/zsh-autosuggestions.zsh 
+
+# Kubectl
+if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi

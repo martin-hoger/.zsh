@@ -10,3 +10,6 @@
 [submodule "custom/zaw"]
 	path = custom/zaw
 	url = https://github.com/zsh-users/zaw
+[submodule "custom/zsh-autosuggestions"]
+	path = custom/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
