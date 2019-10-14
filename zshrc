@@ -530,4 +530,4 @@ export EDITOR
 source ~/.zsh/custom/zsh-autosuggestions/zsh-autosuggestions.zsh 
 
 # Kubectl
-if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+if [ -f /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
