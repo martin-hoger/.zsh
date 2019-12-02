@@ -426,6 +426,11 @@ alias ha="hamster-cli"
 alias fe="find . | entr -c"
 alias i3conf='vim ~/.i3/config'
 alias k='kubectl'
+alias ku='~/bin/kubernetes-explorer.sh'
+alias kn='~/bin/kubernetes-explorer.sh nodes'
+alias kp='~/bin/kubernetes-explorer.sh pods'
+alias ks='~/bin/kubernetes-explorer.sh services'
+alias kw='~/bin/kubernetes-explorer.sh watch'
 alias ll-full='ls -rt -d -1 $PWD/*'
 alias l='ll'
 alias ll='LC_COLLATE="C" ls -alh --group-directories-first'
