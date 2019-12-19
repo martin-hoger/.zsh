@@ -273,6 +273,16 @@ function gcommitsubmodule() {
     cd $CURRENT_DIR
 }
 
+# Commit all submodules
+function gsm() {
+    git submodule foreach git commit -a 
+    git submodule foreach git pull origin master
+    git submodule foreach git rebase HEAD master
+    git submodule foreach git push origin master
+    git add $(git config --file .gitmodules --get-regexp path | awk '{ print $2 }')
+    git commit -m "Submodules updated"
+}
+
 # Grep email addresses from stdin.
 function grep-email() {
     cat | grep -E -o "\b[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\b"
