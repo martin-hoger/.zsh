@@ -136,6 +136,7 @@ PROMPT=$(
     test "$BG" = "" && BG="003"
     test $HOST '=~' "^acer" -a $EUID = 0 && BG="001"
     test $HOST '=~' "^wedos" && BG="038"
+    test $HOST '=~' "^seven" && BG="038"
     test $HOST '=~' "^fv-" && BG="135"
     test $HOST '=~' "^default" && BG="70"
     prompt_segment "$BG" "016" " %~ "
@@ -434,6 +435,8 @@ alias giu="git submodule init; git submodule update"
 alias gw='viewnior . > /dev/null 2>&1 &'
 alias ha="hamster-cli"
 alias fe="find . | entr -c"
+alias ffpipe='tee ~/tmp/output.html; firefox ~/tmp/output.html'
+alias ffpipe-reload='tee ~/tmp/output.html; WID=`xdotool search --name "Mozilla Firefox" | head -1`; xdotool windowactivate $WID; xdotool key F5'
 alias i3conf='vim ~/.i3/config'
 alias k='kubectl'
 alias ku='~/bin/kubernetes-explorer.sh'
