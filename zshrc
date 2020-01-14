@@ -276,7 +276,8 @@ function gcommitsubmodule() {
 
 # Commit all submodules
 function gsm() {
-    git submodule foreach git commit -a 
+    # git submodule foreach git add .
+    git submodule foreach 'git commit -a || true'
     git submodule foreach git pull origin master
     git submodule foreach git rebase HEAD master
     git submodule foreach git push origin master
