@@ -553,3 +553,8 @@ source ~/.zsh/custom/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Kubectl
 if [ -f /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# Load local config
+if [[ -f ~/.zshrc.local ]]; then
+    . ~/.zshrc.local
+fi
