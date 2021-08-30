@@ -433,6 +433,7 @@ alias drwsphp3='drush ws --type=php --count=200'
 alias drwsphp='drush ws --type=php --count=30'
 alias gl="git pull; git submodule init; git submodule update"
 alias glg="git log --stat --graph --all --decorate"
+alias fr="for LINE in \$(); do echo \$LINE; done"
 alias giu="git submodule init; git submodule update"
 alias gw='viewnior . > /dev/null 2>&1 &'
 alias ha="hamster-cli"
